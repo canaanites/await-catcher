@@ -9,8 +9,6 @@ const promiseWrapper = (promise, isDynamicKeys) => {
         getPromise: undefined
     };
 
-    console.log('PROMISE: ', promise, Object.keys(promise)[0]);
-
     if ( !(promise instanceof Object) && !(promise instanceof Promise) ) 
             return {data: undefined, error: "Wrong input... not a promise!"};
 
@@ -26,7 +24,7 @@ const promiseWrapper = (promise, isDynamicKeys) => {
             getDataKey  : promise.prototype.constructor.name && isDynamicKeys ? promise.prototype.constructor.name + "Data"  : "data", 
             getErrorKey : promise.prototype.constructor.name && isDynamicKeys ? promise.prototype.constructor.name + "Error" : "error"
         }
-        console.debug(0, settings);
+        // console.debug(0, settings);
 
     } else if ( promise instanceof Promise ) {
         settings.getPromise = promise;
@@ -34,7 +32,7 @@ const promiseWrapper = (promise, isDynamicKeys) => {
             getDataKey: "data", 
             getErrorKey: "error"
         }
-        console.debug(1, settings);
+        // console.debug(1, settings);
 
     } else if ( promise instanceof Object ) {
         const isFunction = promise[Object.keys(promise)[0]] instanceof Function;
@@ -55,7 +53,7 @@ const promiseWrapper = (promise, isDynamicKeys) => {
             }
         }
 
-        console.debug(2, settings);
+        // console.debug(2, settings);
     }
 
     if (settings.keys === undefined || settings.getPromise === undefined)
