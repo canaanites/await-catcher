@@ -59,5 +59,8 @@ const promiseWrapper = (promise, isDynamicKeys) => {
   };
 
 
-export default promiseWrapper;
+/**
+ * Module exports.
+ */
+module.exports = promiseWrapper;
 

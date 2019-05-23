@@ -1,6 +1,6 @@
 {
   "name": "await-catcher",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "await catcher is a tool that helps catch errors from await promises",
   "main": "index.js",
   "scripts": {
