@@ -2,7 +2,7 @@
  * Helper for async/await error handling. Resolves a promise and passes an error if one exists. Promises of any type with any return value are allowed.
  * @param promise Function or promise
  */
-export const promiseWrapper = (promise, isDynamicKeys) => {
+const promiseWrapper = (promise, isDynamicKeys) => {
 
     const settings = { 
         keys: undefined,
