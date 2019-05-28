@@ -2,9 +2,14 @@
  * Helper for async/await error handling. Resolves a promise and passes an error if one exists. Promises of any type with any return value are allowed.
  * @param promise Function or promise
  */
-const promiseWrapper = (promise, isDynamicKeys) => {
+interface Settings {
+    keys: any,
+    getPromise: any
+}
 
-    const settings = { 
+const promiseWrapper = (promise: any, isDynamicKeys: boolean) => {
+
+    const settings: Settings = { 
         keys: undefined,
         getPromise: undefined
     };
@@ -60,11 +65,11 @@ const promiseWrapper = (promise, isDynamicKeys) => {
         return {data: undefined, error: "Wrong input... not a promise!!!"};
 
     return settings.getPromise
-      .then((data) => ({ 
+      .then((data: any) => ({ 
             [settings.keys.getDataKey]: data, 
             [settings.keys.getErrorKey]: undefined 
         }))
-      .catch((error) => ({ 
+      .catch((error: Error) => ({ 
             [settings.keys.getDataKey]: undefined, 
             [settings.keys.getErrorKey]: error 
         }))

@@ -1,25 +1,25 @@
 {
     "compilerOptions": {
+      "outDir": "dist",
       "allowJs": false,
       "allowSyntheticDefaultImports": true,
       "noFallthroughCasesInSwitch": true,
       "experimentalDecorators": true,
       "esModuleInterop": true,
-      "isolatedModules": true,
       "jsx": "react",
-      "lib": ["es6", "dom"],
+      "lib": ["es2017", "es7", "es6", "dom"],
       "moduleResolution": "node",
       //"noEmit": true,
-      "strict": true,
       "target": "esnext",
       "skipLibCheck": true,
       "forceConsistentCasingInFileNames": true,
       "module": "esnext",
       "resolveJsonModule": true,
       "typeRoots": ["./typings", "./node_modules/@types/"],
-      "noUnusedLocals": true
+      "noUnusedLocals": true,
+      "declaration": true,
+      "sourceMap": true,
     },
-    "exclude": ["node_modules"],
-    "include": ["src"]
+    "exclude": ["node_modules", "dist"]
   }
   
