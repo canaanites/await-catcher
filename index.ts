@@ -6,8 +6,7 @@ interface Settings {
     keys: any,
     getPromise: any
 }
-
-const promiseWrapper = (promise: any, isDynamicKeys: boolean) => {
+const awaitCatcher = (promise: any, isDynamicKeys: boolean) => {
 
     const settings: Settings = { 
         keys: undefined,
@@ -75,9 +74,4 @@ const promiseWrapper = (promise: any, isDynamicKeys: boolean) => {
         }))
   };
 
-
-/**
- * Module exports.
- */
-module.exports = promiseWrapper;
-
+export default awaitCatcher;
