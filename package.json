@@ -1,8 +1,9 @@
 {
   "name": "await-catcher",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "await catcher is a tool that helps catch errors from await promises",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
