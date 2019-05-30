@@ -1,6 +1,10 @@
 {
   "name": "await-catcher",
   "version": "0.0.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/canaanites/await-catcher.git"
+  },
   "description": "await catcher is a tool that helps catch errors from await promises",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,11 +19,9 @@
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^12.0.2",
+    "@types/jest": "^24.0.13",
     "jest": "^24.8.0",
     "ts-jest": "^24.0.2",
     "typescript": "^3.4.5"
-  },
-  "dependencies": {
-    "@types/jest": "^24.0.13"
   }
 }
