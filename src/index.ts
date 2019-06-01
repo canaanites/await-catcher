@@ -10,7 +10,7 @@ type Settings = {
     getPromise: Promise<any>
 }
 
-export const awaitCatcher = (promise: any, isDynamicKeys: boolean) => {
+export const awaitCatcher = (promise: any, isDynamicKeys: boolean = false) => {
 
     const settings: Settings = { 
         keys: undefined,
