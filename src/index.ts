@@ -29,22 +29,23 @@ export const awaitCatcher = (promise: any, isDynamicKeys?: boolean) => {
     if ( promise instanceof Function ) {
         settings.getPromise = promise();
         settings.keys = {
-            getDataKey  : promise.prototype.constructor.name && isDynamicKeys ? promise.prototype.constructor.name + "Data"  : "data", 
-            getErrorKey : promise.prototype.constructor.name && isDynamicKeys ? promise.prototype.constructor.name + "Error" : "error"
+            getDataKey  : promise.hasOwnProperty("prototype") && isDynamicKeys ? promise.prototype.constructor.name + "Data"  : "data", 
+            getErrorKey : promise.hasOwnProperty("prototype") && isDynamicKeys ? promise.prototype.constructor.name + "Error" : "error"
         }
         // console.debug(0, settings);
 
     } else if ( promise instanceof Promise ) {
         settings.getPromise = promise;
         settings.keys = {
-            getDataKey: "data", 
-            getErrorKey: "error"
+            getDataKey  : "data", 
+            getErrorKey : "error"
         }
         // console.debug(1, settings);
 
     } else if ( promise instanceof Object ) {
-        const isFunction = promise[Object.keys(promise)[0]] instanceof Function;
-        const isPromise = !!promise.then;
+        const isFunction = promise[Object.keys(promise)[0]] instanceof Function,
+              isArrowFunction = !promise[Object.keys(promise)[0]].hasOwnProperty("prototype"),
+              isPromise = !!promise.then;
 
         if (isPromise) {
             settings.getPromise = promise;
@@ -56,8 +57,8 @@ export const awaitCatcher = (promise: any, isDynamicKeys?: boolean) => {
         else {
             settings.getPromise = isFunction ? promise[Object.keys(promise)[0]]() : promise[Object.keys(promise)[0]];
             settings.keys = {
-                getDataKey : isFunction ? promise[Object.keys(promise)[0]].prototype.constructor.name + "Data"  : Object.keys(promise)[0] + 'Data',
-                getErrorKey: isFunction ? promise[Object.keys(promise)[0]].prototype.constructor.name + "Error" : Object.keys(promise)[0] + 'Error',
+                getDataKey : isFunction && !isArrowFunction ? promise[Object.keys(promise)[0]].prototype.constructor.name + "Data"  : Object.keys(promise)[0] + 'Data',
+                getErrorKey: isFunction && !isArrowFunction ? promise[Object.keys(promise)[0]].prototype.constructor.name + "Error" : Object.keys(promise)[0] + 'Error',
             }
         }
 
@@ -70,11 +71,19 @@ export const awaitCatcher = (promise: any, isDynamicKeys?: boolean) => {
     return settings.getPromise
       .then((data: any) => ({ 
             [settings.keys.getDataKey]: data, 
-            [settings.keys.getErrorKey]: undefined 
+            [settings.keys.getErrorKey]: undefined,
+            
+            // for backwards compatibility
+            data: data,
+            error: undefined
         }))
       .catch((error: Error) => ({ 
             [settings.keys.getDataKey]: undefined, 
-            [settings.keys.getErrorKey]: error 
+            [settings.keys.getErrorKey]: error,
+
+            //for backwards compatibility
+            data: undefined,
+            error: error
         }))
   };
 
