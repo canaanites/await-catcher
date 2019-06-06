@@ -2,89 +2,110 @@
  * Helper for async/await error handling. Resolves a promise and passes an error if one exists. Promises of any type with any return value are allowed.
  * @param promise Function or promise
  */
+
+type data = any;
+type error = any;
+
 type Settings = {
-    keys: {
-        getDataKey: string,
-        getErrorKey: string
-    },
+    error: [
+        data,
+        error
+    ]
     getPromise: Promise<any>
 }
 
-export const awaitCatcher = (promise: any, isDynamicKeys?: boolean) => {
+export const awaitCatcher = (promise: any) => {
 
     const settings: Settings = { 
-        keys: undefined,
+        error: [
+            undefined, 
+            "Wrong input... not a promise!"
+        ],
         getPromise: undefined
     };
 
-    if ( !(promise instanceof Object) && !(promise instanceof Promise) ) 
-            return {data: undefined, error: "Wrong input... not a promise!"};
 
-    if (!promise.then && promise instanceof Object
+    /**
+     * Check if
+     *  1) is not an Object
+     *  2) is not a Function
+     *  3) is not a Promise
+     */
+    if ( !(promise instanceof Object) && !(promise instanceof Function) && !(promise instanceof Promise) ) 
+            return settings.error;
+
+    /**
+     * Check if
+     *  1) is not a Promise
+     *  2) is an object that does NOT include either a Promise nor a Function in the first Object Key!! 
+     */
+    if ((!promise.then && !(promise instanceof Promise))
+        && promise instanceof Object
         && Object.keys(promise).length > 0 
         && !(promise[Object.keys(promise)[0]] instanceof Promise)
         && !(promise[Object.keys(promise)[0]] instanceof Function)) 
-            return {data: undefined, error: "Wrong input... not a promise!!"};
+            return settings.error;
 
+    /**
+     * Check if
+     *  --> is a function and invoke the function
+     *  --> the function should return a promise
+     * Then set the promise
+     */
     if ( promise instanceof Function ) {
-        settings.getPromise = promise();
-        settings.keys = {
-            getDataKey  : promise.hasOwnProperty("prototype") && isDynamicKeys ? promise.prototype.constructor.name + "Data"  : "data", 
-            getErrorKey : promise.hasOwnProperty("prototype") && isDynamicKeys ? promise.prototype.constructor.name + "Error" : "error"
-        }
-        // console.debug(0, settings);
+        let p = promise();
 
-    } else if ( promise instanceof Promise ) {
+        if (!(p.then && p instanceof Promise))
+            settings.getPromise = p;
+    } 
+
+    /**
+     * else check if
+     *  --> is a Promise and set the promise
+     */
+    else if ( promise instanceof Promise ) {
         settings.getPromise = promise;
-        settings.keys = {
-            getDataKey  : "data", 
-            getErrorKey : "error"
-        }
-        // console.debug(1, settings);
+    } 
 
-    } else if ( promise instanceof Object ) {
+    /**
+     * else check if
+     *  --> is object
+     *  --> the object should contain a promise OR a function (that returns a promise) in the first key of the object
+     * 
+     *  if it's a function --> invoke it and set the promise
+     *  if it's a promise --> just set it
+     */
+    else if ( promise instanceof Object ) {
         const isFunction = promise[Object.keys(promise)[0]] instanceof Function,
-              isArrowFunction = !promise[Object.keys(promise)[0]].hasOwnProperty("prototype"),
-              isPromise = !!promise.then;
+              isPromise = !!promise.then && promise instanceof Promise;
 
         if (isPromise) {
             settings.getPromise = promise;
-            settings.keys = {
-                getDataKey : "data",
-                getErrorKey: "error",
-            }
+        } else if (isFunction) {
+            settings.getPromise = promise[Object.keys(promise)[0]]();
+        } else {
+            settings.getPromise = promise[Object.keys(promise)[0]];
         }
-        else {
-            settings.getPromise = isFunction ? promise[Object.keys(promise)[0]]() : promise[Object.keys(promise)[0]];
-            settings.keys = {
-                getDataKey : isFunction && !isArrowFunction ? promise[Object.keys(promise)[0]].prototype.constructor.name + "Data"  : Object.keys(promise)[0] + 'Data',
-                getErrorKey: isFunction && !isArrowFunction ? promise[Object.keys(promise)[0]].prototype.constructor.name + "Error" : Object.keys(promise)[0] + 'Error',
-            }
-        }
-
-        // console.debug(2, settings);
     }
 
-    if (settings.keys === undefined || settings.getPromise === undefined)
-        return {data: undefined, error: "Wrong input... not a promise!!!"};
+    /**
+     * if getPromise is still undefined --> return error
+     */
+    if (settings.getPromise === undefined)
+        return settings.error;
 
+    /**
+     * Magic happens here
+     */
     return settings.getPromise
-      .then((data: any) => ({ 
-            [settings.keys.getDataKey]: data, 
-            [settings.keys.getErrorKey]: undefined,
-            
-            // for backwards compatibility
-            data: data,
-            error: undefined
-        }))
-      .catch((error: Error) => ({ 
-            [settings.keys.getDataKey]: undefined, 
-            [settings.keys.getErrorKey]: error,
-
-            //for backwards compatibility
-            data: undefined,
-            error: error
-        }))
+      .then((data: any) => ([
+          data,
+          undefined
+      ]))
+      .catch((error: Error) => ([
+          undefined,
+          error
+      ]))
   };
 
 export default awaitCatcher;
