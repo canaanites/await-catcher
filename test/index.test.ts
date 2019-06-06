@@ -1,4 +1,4 @@
-import awaitCatcher from "./index";
+import awaitCatcher from "../src/index";
 
 describe('Await-catcher tests', () => {
     // const testApiCall = () => {
