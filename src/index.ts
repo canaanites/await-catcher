@@ -55,7 +55,7 @@ export const awaitCatcher = (promise: any) => {
     if ( promise instanceof Function ) {
         let p = promise();
 
-        if (!(p.then && p instanceof Promise))
+        if (p.then && p instanceof Promise)
             settings.getPromise = p;
     } 
 
