@@ -1,29 +1,24 @@
 /**
  * Helper for async/await error handling. Resolves a promise and passes an error if one exists. Promises of any type with any return value are allowed.
- * @param promise Function or promise
+ * @param promise type of promise or a function that returns a promise or an object that contians either a promise or a function that returns a promise
  */
+export const awaitCatcher = <T>(promise: T | Promise<T> | ReturnType<()=> ()=> Promise<T>>): Promise<[T | undefined, Error | undefined]> => {
 
-type data = any;
-type error = any;
-
-type Settings = {
-    error: [
-        data,
-        error
-    ]
-    getPromise: Promise<any>
-}
-
-export const awaitCatcher = (promise: any) => {
+    /**
+     * Types
+     */
+    type Settings = {
+        error: Promise<[undefined, Error]>,
+        getPromise: Promise<any> | undefined
+    }
 
     const settings: Settings = { 
-        error: [
+        error: Promise.resolve([
             undefined, 
-            "Wrong input... not a promise!"
-        ],
+            new Error("Wrong input... not a promise!")
+        ]),
         getPromise: undefined
     };
-
 
     /**
      * Check if
@@ -31,7 +26,7 @@ export const awaitCatcher = (promise: any) => {
      *  2) is not a Function
      *  3) is not a Promise
      */
-    if ( !(promise instanceof Object) && !(promise instanceof Function) && !(promise instanceof Promise) ) 
+    if ( !(promise instanceof Promise) && !(promise instanceof Function) && !(promise instanceof Object) ) 
             return settings.error;
 
     /**
@@ -39,7 +34,7 @@ export const awaitCatcher = (promise: any) => {
      *  1) is not a Promise
      *  2) is an object that does NOT include either a Promise nor a Function in the first Object Key!! 
      */
-    if ((!promise.then && !(promise instanceof Promise))
+    if ((!promise && !(promise instanceof Promise))
         && promise instanceof Object
         && Object.keys(promise).length > 0 
         && !(promise[Object.keys(promise)[0]] instanceof Promise)
@@ -76,12 +71,9 @@ export const awaitCatcher = (promise: any) => {
      *  if it's a promise --> just set it
      */
     else if ( promise instanceof Object ) {
-        const isFunction = promise[Object.keys(promise)[0]] instanceof Function,
-              isPromise = !!promise.then && promise instanceof Promise;
+        const isFunction = promise[Object.keys(promise)[0]] instanceof Function;
 
-        if (isPromise) {
-            settings.getPromise = promise;
-        } else if (isFunction) {
+        if (isFunction) {
             settings.getPromise = promise[Object.keys(promise)[0]]();
         } else {
             settings.getPromise = promise[Object.keys(promise)[0]];
@@ -98,14 +90,33 @@ export const awaitCatcher = (promise: any) => {
      * Magic happens here
      */
     return settings.getPromise
-      .then((data: any) => ([
-          data,
+      .then<[T, undefined]>((data: T) => [
+          data as T,
           undefined
-      ]))
-      .catch((error: Error) => ([
+      ])
+      .catch<[undefined, Error]>((error: Error) => [
           undefined,
           error
-      ]))
+      ])
   };
 
 export default awaitCatcher;
+
+
+/**
+ * test...
+ */
+// interface promiseType {
+//     // (): Promise<{test: number}>
+//     // [key: string]: number
+//     // [key: string]: string
+//     [key: string]: ()=>Promise<{[key: string]: number}>
+// }
+
+// // type pf = Promise<{[key: string]: number}>;
+
+// (async () => {
+//     let p = {f: ()=> Promise.resolve({test: 123})}
+//     let [ data , error ] = await awaitCatcher<promiseType>(p);
+//     console.log(data, error);
+// })()
