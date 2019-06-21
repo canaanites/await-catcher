@@ -1,10 +1,20 @@
 /**
+ * The argument passed into the awaitCatcher
+ */
+type PromiseArg<T> = T | Promise<T> | ReturnType<()=> ()=> Promise<T>>;
+
+/**
+ * The promise returned from awaitCatcher contianing an array of [data | undefined, error | undefined]
+ */
+type PromiseReturn<T> = Promise<[T | undefined, Error | undefined]>;
+
+/**
  * Helper for async/await error handling. Resolves a promise and passes an error if one exists. Promises of any type with any return value are allowed.
  * @param promise 1) a promise, or
  *                2) a function that returns a promise, or 
  *                3) an object that contains either a promise or a function that returns a promise
- */
-export const awaitCatcher = <T>(promise: T | Promise<T> | ReturnType<()=> ()=> Promise<T>>): Promise<[T | undefined, Error | undefined]> => {
+ */  
+export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
 
     /**
      * Types
