@@ -8,8 +8,9 @@ describe('Await-catcher tests', () => {
     // }
 
     it('Returns an error if function passed to await-catcher does not return a promise', async (done) => {
-        let { error } = await awaitCatcher('BAD INPUT', false);
-        expect(error).toBe('Wrong input... not a promise!');
+        let [ data, error ] = await awaitCatcher('BAD INPUT');
+        expect(data).toBe(undefined);
+        expect(error).toEqual(new Error("Wrong input... not a promise!"));
         done();
     })
 });
