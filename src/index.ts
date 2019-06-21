@@ -1,6 +1,8 @@
 /**
  * Helper for async/await error handling. Resolves a promise and passes an error if one exists. Promises of any type with any return value are allowed.
- * @param promise type of promise or a function that returns a promise or an object that contians either a promise or a function that returns a promise
+ * @param promise 1) a promise, or
+ *                2) a function that returns a promise, or 
+ *                3) an object that contains either a promise or a function that returns a promise
  */
 export const awaitCatcher = <T>(promise: T | Promise<T> | ReturnType<()=> ()=> Promise<T>>): Promise<[T | undefined, Error | undefined]> => {
 
