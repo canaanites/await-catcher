@@ -15,7 +15,6 @@ type PromiseReturn<T> = Promise<[T | undefined, Error | undefined]>;
  *                3) an object that contains either a promise or a function that returns a promise
  */  
 export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
-    console.log(!promise && !(promise instanceof Promise));
     /**
      * Types
      */
@@ -95,8 +94,9 @@ export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
     /**
      * if getPromise is still undefined --> return error
      */
-    if (settings.getPromise === undefined)
-        return settings.error;
+    // UNREACHABLE CODE BELOW:
+    // if (settings.getPromise === undefined)
+    //     return settings.error;
 
     /**
      * Magic happens here
