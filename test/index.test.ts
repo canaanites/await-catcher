@@ -6,28 +6,29 @@ describe('Await-catcher tests', () => {
     //         resolve('SUCCESS');
     //     })
     // }
-    describe('Bad input error tests', () => {
-        it('Returns an error if value passed to await-catcher is not a promise or a function or an object', async (done) => {
-            let [ data, error ] = await awaitCatcher('BAD INPUT');
-            expect(data).toBe(undefined);
-            expect(error).toEqual(new Error("Wrong input... not a promise!"));
-            done();
-        });
+    
+    // describe('Bad input error tests', () => {
+    //     it('Returns an error if value passed to await-catcher is not a promise or a function or an object', async (done) => {
+    //         let [ data, error ] = await awaitCatcher('BAD INPUT');
+    //         expect(data).toBe(undefined);
+    //         expect(error).toEqual(new Error("Wrong input... not a promise!"));
+    //         done();
+    //     });
 
-        it(`Returns an error if value passed to await-catcher is an object but does not have a promise or function as it's first key`, async (done) => {
-            let [ data, error ] = await awaitCatcher({ key: 'BAD INPUT' });
-            expect(data).toBe(undefined);
-            expect(error).toEqual(new Error("Wrong input... not a promise!"));
-            done();
-        });
+    //     it(`Returns an error if value passed to await-catcher is an object but does not have a promise or function as it's first key`, async (done) => {
+    //         let [ data, error ] = await awaitCatcher({ key: 'BAD INPUT' });
+    //         expect(data).toBe(undefined);
+    //         expect(error).toEqual(new Error("Wrong input... not a promise!"));
+    //         done();
+    //     });
 
-        it(`Returns both 'data' and 'error' undefined if value passed to await-catcher is a promise that resolves to undefined`, async (done) => {
-            let [ data, error ] = await awaitCatcher(Promise.resolve(undefined));
-            expect(data).toBe(undefined);
-            expect(error).toBe(undefined);
-            done();
-        });
-    });
+    //     it(`Returns both 'data' and 'error' undefined if value passed to await-catcher is a promise that resolves to undefined`, async (done) => {
+    //         let [ data, error ] = await awaitCatcher(Promise.resolve(undefined));
+    //         expect(data).toBe(undefined);
+    //         expect(error).toBe(undefined);
+    //         done();
+    //     });
+    // });
 
     describe('When passed a promise', () => {
         it(`Returns the resolved value as the 'data' key if promise resolves successfully`, async (done) => {

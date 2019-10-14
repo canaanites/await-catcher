@@ -126,15 +126,14 @@ export default awaitCatcher;
 //     // [key: string]: string
 //     // [key: string]: ()=>Promise<{[key: string]: number}>
 // }
-
-type pt = Array<number>;
+// type pt = Array<number>;
 // type pf = Promise<{[key: string]: number}>;
 
-(async () => {
-    let p = [123, 321]
-    // let p = Promise.resolve({a:1})
-    // let p = () => Promise.resolve({test:1});
-    // let p = {f: ()=> Promise.resolve({a:1})}
-    let [ data , error ] = await awaitCatcher<pt>(p);
-    console.log(data, error);
-})()
+// (async () => {
+//     let p = [123, 321]
+//     // let p = Promise.resolve({a:1})
+//     // let p = () => Promise.resolve({test:1});
+//     // let p = {f: ()=> Promise.resolve({a:1})}
+//     let [ data , error ] = await awaitCatcher<pt>(p);
+//     console.log(data, error);
+// })()
