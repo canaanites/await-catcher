@@ -15,7 +15,6 @@ type PromiseReturn<T> = Promise<[T | undefined, Error | undefined]>;
  *                3) an object that contains either a promise or a function that returns a promise
  */  
 export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
-
     /**
      * Types
      */
