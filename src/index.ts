@@ -12,7 +12,8 @@ type PromiseReturn<T> = Promise<[T | undefined, Error | undefined]>;
  * Helper for async/await error handling. Resolves a promise and passes an error if one exists. Promises of any type with any return value are allowed.
  * @param promise 1) a promise, or
  *                2) a function that returns a promise, or 
- *                3) an object that contains either a promise or a function that returns a promise
+ *                3) an object that contains either a promise or a function that returns a promise, or
+ *                4) an array or primitive values (string/number)
  */  
 export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
     /**
