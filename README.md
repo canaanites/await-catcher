@@ -1,8 +1,9 @@
 # await-catcher
 
-Will be updated very soon!
+[![NPM version][npm-image]][npm-url]
+[![Downloads][download-badge]][npm-url]
 
-
+> Promise wrapper for easy error handling without try-catch
 
 -----
 # Install and use
@@ -21,8 +22,6 @@ npm i await-catcher --save
 ```js
 /** 
  *  #1 - Type checking with typeScript generics 
- *
- *  This is probably the most powerful feature of awaitCatcher
  */
 interface promiseType_1 {
      test: string
@@ -127,3 +126,18 @@ console.log(anyVarName_data, anyVarName_error); // "I can pass functions that re
 [ data, error ] = await awaitCatcher( { p: () => Promise.resolve("awaitCatcher will be able to find and handle this promise")} )
 console.log(data, error); // ""awaitCatcher will be able to find and handle this promise", undefined
 ```
+
+
+[npm-url]: https://www.npmjs.com/package/await-catcher
+[npm-image]: https://img.shields.io/npm/v/await-catcher.svg?style=flat-square
+
+[travis-url]: https://travis-ci.org/scopsy/await-catcher
+[travis-image]: https://img.shields.io/travis/scopsy/await-catcher.svg?style=flat-square
+
+[coveralls-url]: https://coveralls.io/r/scopsy/await-catcher
+[coveralls-image]: https://img.shields.io/coveralls/scopsy/await-catcher.svg?style=flat-square
+
+[depstat-url]: https://david-dm.org/scopsy/await-catcher
+[depstat-image]: https://david-dm.org/scopsy/await-catcher.svg?style=flat-square
+
+[download-badge]: http://img.shields.io/npm/dm/await-catcher.svg?style=flat-square
