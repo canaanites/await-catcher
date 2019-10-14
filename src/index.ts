@@ -37,21 +37,23 @@ export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
      *  1) is not an Object
      *  2) is not a Function
      *  3) is not a Promise
+     * 
+     * ---> Promisify the promise arg
      */
     if ( !(promise instanceof Promise) && !(promise instanceof Function) && !(promise instanceof Object) ) 
-            return settings.error;
+            promise = Promise.resolve(promise);
 
     /**
      * Check if
      *  1) is not a Promise
      *  2) is an object that does NOT include either a Promise nor a Function in the first Object Key!! 
      */
-    if ((!promise && !(promise instanceof Promise))
-        && promise instanceof Object
-        && Object.keys(promise).length > 0 
-        && !(promise[Object.keys(promise)[0]] instanceof Promise)
-        && !(promise[Object.keys(promise)[0]] instanceof Function)) 
-            return settings.error;
+    // if (!(promise instanceof Promise)
+    //     && promise instanceof Object
+    //     && Object.keys(promise).length > 0 
+    //     && !(promise[Object.keys(promise)[0]] instanceof Promise)
+    //     && !(promise[Object.keys(promise)[0]] instanceof Function)) 
+    //         return settings.error;
 
     /**
      * Check if
@@ -63,7 +65,7 @@ export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
         let p = promise();
 
         if (p.then && p instanceof Promise)
-            settings.getPromise = p;
+            settings.getPromise = Promise.resolve(p);
     } 
 
     /**
@@ -71,7 +73,7 @@ export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
      *  --> is a Promise and set the promise
      */
     else if ( promise instanceof Promise ) {
-        settings.getPromise = promise;
+        settings.getPromise = Promise.resolve(promise);
     } 
 
     /**
@@ -86,17 +88,17 @@ export const awaitCatcher = <T>(promise: PromiseArg<T>): PromiseReturn<T> => {
         const isFunction = promise[Object.keys(promise)[0]] instanceof Function;
 
         if (isFunction) {
-            settings.getPromise = promise[Object.keys(promise)[0]]();
+            settings.getPromise = Promise.resolve(promise[Object.keys(promise)[0]]()) ;
         } else {
-            settings.getPromise = promise[Object.keys(promise)[0]];
+            settings.getPromise = Promise.resolve(promise[Object.keys(promise)[0]]);
         }
     }
 
     /**
      * if getPromise is still undefined --> return error
      */
-    if (settings.getPromise === undefined)
-        return settings.error;
+    // if (settings.getPromise === undefined)
+    //     return settings.error;
 
     /**
      * Magic happens here
@@ -117,18 +119,23 @@ export default awaitCatcher;
 
 /**
  * test...
+ * uncomment one at a time...
  */
 // interface promiseType {
 //     // (): Promise<{test: number}>
 //     // [key: string]: number
 //     // [key: string]: string
-//     [key: string]: ()=>Promise<{[key: string]: number}>
+//     // [key: string]: ()=>Promise<{[key: string]: number}>
 // }
 
-// // type pf = Promise<{[key: string]: number}>;
+type pt = Array<number>;
+// type pf = Promise<{[key: string]: number}>;
 
-// (async () => {
-//     let p = {f: ()=> Promise.resolve({test: 123})}
-//     let [ data , error ] = await awaitCatcher<promiseType>(p);
-//     console.log(data, error);
-// })()
+(async () => {
+    let p = [123, 321]
+    // let p = Promise.resolve({a:1})
+    // let p = () => Promise.resolve({test:1});
+    // let p = {f: ()=> Promise.resolve({a:1})}
+    let [ data , error ] = await awaitCatcher<pt>(p);
+    console.log(data, error);
+})()
