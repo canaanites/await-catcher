@@ -42,7 +42,7 @@ type promiseType_2 = Array<number>;
      let p = [123, 321];
 
      let [ data , error ] = await awaitCatcher<promiseType_2>(p);
-     console.log(data, error); // "hi mom, undefined 
+     console.log(data, error); // "[123, 321], undefined 
 
      let p2 = [123, "string"];
      let [ data , error ] = await awaitCatcher<promiseType_2>(p); // Type error: Type 'string' is not assignable to type 'number'
