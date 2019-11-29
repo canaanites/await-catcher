@@ -1,11 +1,15 @@
 {
   "name": "await-catcher",
-  "version": "1.0.0",
+  "version": "1.1.0",
+  "description": "Promise wrapper for easy error handling without try-catch",
   "repository": {
     "type": "git",
     "url": "https://github.com/canaanites/await-catcher.git"
   },
-  "description": "await catcher is a tool that helps catch errors from await promises",
+  "homepage": "https://github.com/canaanites/await-catcher#readme",
+  "bugs": {
+    "url": "https://github.com/canaanites/await-catcher/issues"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -17,6 +21,7 @@
   ],
   "author": "Moe Kanan",
   "contributors": [
+    "Moe Kanan",
     "Nick Havens"
   ],
   "license": "ISC",
