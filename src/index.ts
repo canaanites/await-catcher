@@ -20,7 +20,7 @@ type options = {
  *                3) an object that contains either a promise or a function that returns a promise, or
  *                4) an array or primitive values (string/number)
  * 
- * @param options [Object]
+ * @param options [options]
  */  
 export async function awaitCatcher <T>(promise: PromiseArg<T>, options?: options): PromiseReturn<T> {
     /**
@@ -141,3 +141,7 @@ export default { awaitCatcher, awaitCatcherAsync };
 //     let [ data , error ] = await awaitCatcher<promiseType>(p);
 //     console.log(data, error);
 // })()
+
+
+// or
+// awaitCatcherAsync('test', (data, error) => console.log(data))
