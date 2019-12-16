@@ -64,6 +64,7 @@ await-catcher benefits:
  4) Use awaitCatcherAsync to pass a call-back instead of using await/async (see below screenshot)
 ```
 <img align="right" alt="await-catcher example" src="await-catcher-example.PNG" target="_blank" />
+<br>
 
 ### #1
 ```js
@@ -93,7 +94,6 @@ let [ data , error ] = await awaitCatcher<Type_2>(array2);
 console.log(data, error); // undefined, Type error: Type 'string' is not assignable to type 'number'
 
 ```
-<br>
 
 ### #2
 ```js
@@ -143,7 +143,6 @@ const confirmUserEmailById = async (userId) => {
 
 }
 ```
-<br>
 
 ### #3
 ```js
@@ -175,7 +174,6 @@ const [ anyVarName_data, anyVarName_error ] = await awaitCatcher( () => Promise.
 console.log(anyVarName_data, anyVarName_error); // "I can pass functions that return promises", undefined
 
 ```
-<br>
 
 ### #4
 ```js
@@ -201,7 +199,6 @@ awaitCatcherAsync<Array<string>>(
     options 
   );
 ```
-<br>
 
 ### Options
 ```js
