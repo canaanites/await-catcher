@@ -94,7 +94,6 @@ console.log(data, error); // undefined, Type error: Type 'string' is not assigna
 
 ```
 <br>
-<br>
 
 ### #2
 ```js
@@ -145,7 +144,6 @@ const confirmUserEmailById = async (userId) => {
 }
 ```
 <br>
-<br>
 
 ### #3
 ```js
@@ -178,7 +176,6 @@ console.log(anyVarName_data, anyVarName_error); // "I can pass functions that re
 
 ```
 <br>
-<br>
 
 ### #4
 ```js
@@ -205,8 +202,6 @@ awaitCatcherAsync<Array<string>>(
   );
 ```
 <br>
-<br>
-
 
 ### Options
 ```js
