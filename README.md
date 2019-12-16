@@ -69,26 +69,26 @@ await-catcher provides 3 main benefits:
 /** 
  *  #1 - Type checking with typeScript generics 
  * 
- *  Notice how the types are being passed. await-catcher uses generics to validate the returned value
- *  If the type doesn't match the returned value, then await-catcher will return the type error
+ *  Notice how the types are being passed. await-catcher uses generics to validate the types
+ *  If a type doesn't match the returned value, then await-catcher will return a type error at runtime and compile time!
  */
-interface promiseType_1 {
+interface Type_1 {
      test: string
  }
 
-let p = Promise.resolve({test: "hi mom"})
-let [ data , error ] = await awaitCatcher<promiseType_1>(p);
+let promise = Promise.resolve({test: "hi mom"})
+let [ data , error ] = await awaitCatcher<Type_1>(promise);
 console.log(data, error); // "hi mom, undefined 
 
 
-type promiseType_2 = Array<number>;
+type Type_2 = Array<number>;
 
 let array = [123, 321];
-let [ data , error ] = await awaitCatcher<promiseType_2>(array);
+let [ data , error ] = await awaitCatcher<Type_2>(array);
 console.log(data, error); // "[123, 321], undefined 
 
 let array2 = [123, "string"];
-let [ data , error ] = await awaitCatcher<promiseType_2>(array2); 
+let [ data , error ] = await awaitCatcher<Type_2>(array2); 
 console.log(data, error); // undefined, Type error: Type 'string' is not assignable to type 'number'
 
 ```
@@ -195,6 +195,8 @@ awaitCatcherAsync<Array<string>>(
   );
 ```
 
+
+### Options
 ```js
   type options = {
       getByKeys?: String[]; // get key/values from object
