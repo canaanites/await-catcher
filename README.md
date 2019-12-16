@@ -56,16 +56,20 @@ import { awaitCatcher, awaitCatcherAsync } from 'await-catcher';
 
 -----
 ## Examples
-await-catcher has 3 main benefits:
+await-catcher provides 3 main benefits:
 ```text
  1) Type checking with typeScript generics
  2) Cleaner & less code (no need for try/catch)
  3) Dynamic variable names, accepts all data types, and more...
 ```
+<img align="right" alt="Medium: exposition" src="await-catcher-example.PNG" target="_blank" />
 
 ```js
 /** 
  *  #1 - Type checking with typeScript generics 
+ * 
+ *  Notice how the types are being passed. await-catcher uses generics to validate the returned value
+ *  If the type doesn't match the returned value, then await-catcher will return the type error
  */
 interface promiseType_1 {
      test: string
@@ -74,6 +78,7 @@ interface promiseType_1 {
 let p = Promise.resolve({test: "hi mom"})
 let [ data , error ] = await awaitCatcher<promiseType_1>(p);
 console.log(data, error); // "hi mom, undefined 
+
 
 type promiseType_2 = Array<number>;
 
