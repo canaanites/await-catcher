@@ -1,6 +1,6 @@
 <p>
   <a aria-label="await-catcher" href="https://www.npmjs.com/package/await-catcher">
-    <img src="https://img.shields.io/npm/v/await-catcher.svg?style=flat-square" target="_blank" />
+    <img src="https://img.shields.io/npm/v/await-catcher.svg?style=for-the-badge" target="_blank" />
   </a>
  
  <a aria-label="await-catcher" href="https://github.com/canaanites/await-catcher/blob/master/LICENSE" target="_blank">
@@ -21,12 +21,12 @@
 </p>
 
 <p>
-  <a aria-label="Follow @expo on Twitter" href="https://www.npmjs.com/package/await-catcher" target="_blank">
-    <img  alt="Twitter: expo" src="http://img.shields.io/npm/dm/await-catcher.svg?style=flat-square" target="_blank" />
+  <a aria-label="NPM await-catcher" href="https://www.npmjs.com/package/await-catcher" target="_blank">
+    <img  alt="NPM: await-catcher" src="http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge" target="_blank" />
   </a>
 <!--- 
   <a aria-label="" href="">
-    <img align="right" alt="Medium: exposition" src="https://img.shields.io/badge/Learn%20more%20on%20our%20blog-lightgray.svg?style=flat-square" target="_blank" />
+    <img align="right" alt="await-catcher" src="https://img.shields.io/badge/Learn%20more%20on%20our%20blog-lightgray.svg?style=flat-square" target="_blank" />
   </a>
 --->
 </p>
@@ -63,7 +63,7 @@ await-catcher provides 3 main benefits:
  3) Dynamic variable names, accepts all data types, and more...
  4) Use awaitCatcherAsync to pass a call-back instead of using await/async (see below screenshot)
 ```
-<img align="right" alt="Medium: exposition" src="await-catcher-example.PNG" target="_blank" />
+<img align="right" alt="await-catcher example" src="await-catcher-example.PNG" target="_blank" />
 
 ```js
 /** 
@@ -190,7 +190,7 @@ console.log(anyVarName_data, anyVarName_error); // "I can pass functions that re
  *  This is useful when you're not in an async function, but you still can use await-catcher
  */
 ```
-<img align="right" alt="Medium: exposition" src="await-catcher-example.PNG" target="_blank" />
+<img align="right" alt="await-catcher-example" src="await-catcher-example.PNG" target="_blank" />
 
 ```js
 /**
@@ -220,18 +220,18 @@ awaitCatcherAsync<Array<string>>(
 ```
 
 [npm-url]: https://www.npmjs.com/package/await-catcher
-[npm-image]: https://img.shields.io/npm/v/await-catcher.svg?style=for-the-badge
+[npm-image]: https://img.shields.io/npm/v/await-catcher.svg?style=flat-square
 
 [travis-url]: https://travis-ci.org/scopsy/await-catcher
-[travis-image]: https://img.shields.io/travis/scopsy/await-catcher.svg?style=for-the-badge
+[travis-image]: https://img.shields.io/travis/scopsy/await-catcher.svg?style=flat-square
 
 [coveralls-url]: https://coveralls.io/r/scopsy/await-catcher
-[coveralls-image]: https://img.shields.io/coveralls/scopsy/await-catcher.svg?style=for-the-badge
+[coveralls-image]: https://img.shields.io/coveralls/scopsy/await-catcher.svg?style=flat-square
 
 [depstat-url]: https://david-dm.org/scopsy/await-catcher
-[depstat-image]: https://david-dm.org/scopsy/await-catcher.svg?style=for-the-badge
+[depstat-image]: https://david-dm.org/scopsy/await-catcher.svg?style=flat-square
 
-[download-image]: http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge
+[download-image]: http://img.shields.io/npm/dm/await-catcher.svg?style=flat-square
 
 [actions-image]: https://github.com/canaanites/await-catcher/workflows/Test%20await%20catcher/badge.svg
 [actions-url]: https://github.com/canaanites/await-catcher/actions
