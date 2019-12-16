@@ -112,7 +112,12 @@ export async function awaitCatcher <T>(promise: PromiseArg<T>, options?: options
       ])
   };
 
-
+/**
+ * awaitCatcherAsync is a wrapper for awaitCatcher that accepts a callback instead of aysnc/await
+ * @param promise 
+ * @param cb 
+ * @param options 
+ */
 export async function awaitCatcherAsync<T>(promise: PromiseArg<T>, cb: Function, options?: options): PromiseReturn<T> {
     const [data, error] = await awaitCatcher(promise, options);
     return cb(data, error);
