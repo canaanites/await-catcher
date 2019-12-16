@@ -61,6 +61,7 @@ await-catcher provides 3 main benefits:
  1) Type checking with typeScript generics
  2) Cleaner & less code (no need for try/catch)
  3) Dynamic variable names, accepts all data types, and more...
+ 4) Use awaitCatcherAsync to pass a call-back instead of using await/async (see below screenshot)
 ```
 <img align="right" alt="Medium: exposition" src="await-catcher-example.PNG" target="_blank" />
 
@@ -170,6 +171,36 @@ console.log(anyVarName_data, anyVarName_error); // "I can pass functions that re
 
 ```
 
+```js
+/** 
+ *  #4 - Use awaitCatcherAsync to pass a call-back instead of using await/async
+ *  
+ *  This is useful when you're not in an async function, but you still can use await-catcher
+ */
+```
+<img align="right" alt="Medium: exposition" src="await-catcher-example.PNG" target="_blank" />
+
+```js
+/**
+ * awaitCatcherAsync is a wrapper for awaitCatcher that accepts a callback instead of aysnc/await
+ * @param promise 
+ * @param cb 
+ * @param options 
+ */
+
+awaitCatcherAsync<Array<string>>(
+    callToGetData(), 
+    (data, error) => this.setState({updateScreenData: data}), 
+    options 
+  );
+```
+
+```js
+  type options = {
+      getByKeys?: String[]; // get key/values from object
+      getByKeysAndInvoke?: String[]; // get key/values from object and invoke functions
+  }
+```
 
 [npm-url]: https://www.npmjs.com/package/await-catcher
 [npm-image]: https://img.shields.io/npm/v/await-catcher.svg?style=flat-square
