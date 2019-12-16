@@ -92,9 +92,10 @@ let [ data , error ] = await awaitCatcher<Type_2>(array2);
 console.log(data, error); // undefined, Type error: Type 'string' is not assignable to type 'number'
 
 ```
-
-
-
+<br>
+<br>
+<br>
+<br>
 
 ```js
 /** 
@@ -143,9 +144,10 @@ const confirmUserEmailById = async (userId) => {
 
 }
 ```
-
-
-
+<br>
+<br>
+<br>
+<br>
 
 ```js
 /** 
@@ -176,9 +178,10 @@ const [ anyVarName_data, anyVarName_error ] = await awaitCatcher( () => Promise.
 console.log(anyVarName_data, anyVarName_error); // "I can pass functions that return promises", undefined
 
 ```
-
-
-
+<br>
+<br>
+<br>
+<br>
 
 ```js
 /** 
@@ -203,9 +206,10 @@ awaitCatcherAsync<Array<string>>(
     options 
   );
 ```
-
-
-
+<br>
+<br>
+<br>
+<br>
 
 ### Options
 ```js
@@ -216,18 +220,18 @@ awaitCatcherAsync<Array<string>>(
 ```
 
 [npm-url]: https://www.npmjs.com/package/await-catcher
-[npm-image]: https://img.shields.io/npm/v/await-catcher.svg?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/await-catcher.svg?style=for-the-badge
 
 [travis-url]: https://travis-ci.org/scopsy/await-catcher
-[travis-image]: https://img.shields.io/travis/scopsy/await-catcher.svg?style=flat-square
+[travis-image]: https://img.shields.io/travis/scopsy/await-catcher.svg?style=for-the-badge
 
 [coveralls-url]: https://coveralls.io/r/scopsy/await-catcher
-[coveralls-image]: https://img.shields.io/coveralls/scopsy/await-catcher.svg?style=flat-square
+[coveralls-image]: https://img.shields.io/coveralls/scopsy/await-catcher.svg?style=for-the-badge
 
 [depstat-url]: https://david-dm.org/scopsy/await-catcher
-[depstat-image]: https://david-dm.org/scopsy/await-catcher.svg?style=flat-square
+[depstat-image]: https://david-dm.org/scopsy/await-catcher.svg?style=for-the-badge
 
-[download-image]: http://img.shields.io/npm/dm/await-catcher.svg?style=flat-square
+[download-image]: http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge
 
 [actions-image]: https://github.com/canaanites/await-catcher/workflows/Test%20await%20catcher/badge.svg
 [actions-url]: https://github.com/canaanites/await-catcher/actions
