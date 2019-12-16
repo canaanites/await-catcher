@@ -56,7 +56,7 @@ import { awaitCatcher, awaitCatcherAsync } from 'await-catcher';
 
 -----
 ## Examples
-await-catcher provides 3 main benefits:
+await-catcher benefits:
 ```text
  1) Type checking with typeScript generics
  2) Cleaner & less code (no need for try/catch)
@@ -65,6 +65,7 @@ await-catcher provides 3 main benefits:
 ```
 <img align="right" alt="await-catcher example" src="await-catcher-example.PNG" target="_blank" />
 
+### #1
 ```js
 /** 
  *  #1 - Type checking with typeScript generics 
@@ -94,9 +95,8 @@ console.log(data, error); // undefined, Type error: Type 'string' is not assigna
 ```
 <br>
 <br>
-<br>
-<br>
 
+### #2
 ```js
 /** 
  *  #2 - Cleaner and less code
@@ -146,9 +146,8 @@ const confirmUserEmailById = async (userId) => {
 ```
 <br>
 <br>
-<br>
-<br>
 
+### #3
 ```js
 /** 
  *  #3 - Dynamic variables names
@@ -180,9 +179,8 @@ console.log(anyVarName_data, anyVarName_error); // "I can pass functions that re
 ```
 <br>
 <br>
-<br>
-<br>
 
+### #4
 ```js
 /** 
  *  #4 - Use awaitCatcherAsync to pass a call-back instead of using await/async
@@ -208,8 +206,7 @@ awaitCatcherAsync<Array<string>>(
 ```
 <br>
 <br>
-<br>
-<br>
+
 
 ### Options
 ```js
