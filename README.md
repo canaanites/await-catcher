@@ -93,6 +93,9 @@ console.log(data, error); // undefined, Type error: Type 'string' is not assigna
 
 ```
 
+
+
+
 ```js
 /** 
  *  #2 - Cleaner and less code
@@ -141,6 +144,9 @@ const confirmUserEmailById = async (userId) => {
 }
 ```
 
+
+
+
 ```js
 /** 
  *  #3 - Dynamic variables names
@@ -171,6 +177,9 @@ console.log(anyVarName_data, anyVarName_error); // "I can pass functions that re
 
 ```
 
+
+
+
 ```js
 /** 
  *  #4 - Use awaitCatcherAsync to pass a call-back instead of using await/async
@@ -194,6 +203,8 @@ awaitCatcherAsync<Array<string>>(
     options 
   );
 ```
+
+
 
 
 ### Options
