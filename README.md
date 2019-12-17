@@ -59,12 +59,12 @@ import { awaitCatcher, awaitCatcherAsync } from 'await-catcher';
 
 ## Examples
 await-catcher benefits:
-```text
+
  1) Type checking with typeScript generics
  2) Cleaner & less code (no need for try/catch)
  3) Dynamic variable names, accepts all data types, and more...
  4) Use awaitCatcherAsync to pass a call-back instead of using await/async (see below screenshot)
-```
+
 <img align="right" alt="await-catcher example" src="await-catcher-example.PNG" target="_blank" />
 .
 
