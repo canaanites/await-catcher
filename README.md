@@ -23,11 +23,11 @@
 <br>
 
 <p>
-  <a aria-label="NPM await-catcher" href="https://www.npmjs.com/package/await-catcher" target="_blank">
-    <img  alt="NPM: await-catcher" src="http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge" target="_blank" />
-  </a>
+  <img alt="npm type definitions" src="https://img.shields.io/npm/types/await-catcher?style=for-the-badge">
 
-  <img align="right" alt="npm type definitions" src="https://img.shields.io/npm/types/await-catcher?style=for-the-badge">
+  <a aria-label="NPM await-catcher" href="https://www.npmjs.com/package/await-catcher" target="_blank">
+    <img align="right" alt="NPM: await-catcher" src="http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge" target="_blank" />
+  </a>
 <!--- 
   <a aria-label="" href="">
     <img align="right" alt="await-catcher" src="https://img.shields.io/badge/Learn%20more%20on%20our%20blog-lightgray.svg?style=flat-square" target="_blank" />
