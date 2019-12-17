@@ -20,6 +20,8 @@
   </a>
 </p>
 
+<br>
+
 <p>
   <a aria-label="NPM await-catcher" href="https://www.npmjs.com/package/await-catcher" target="_blank">
     <img  alt="NPM: await-catcher" src="http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge" target="_blank" />
@@ -30,7 +32,7 @@
   </a>
 --->
 </p>
-
+<br>
 
 <!---
 # await-catcher
@@ -45,7 +47,7 @@
 ```bash
 npm i await-catcher --save
 ```
-
+<br>
 
 ## Usage
 Import the library into your JavaScript file:
@@ -53,7 +55,7 @@ Import the library into your JavaScript file:
 ```js
 import { awaitCatcher, awaitCatcherAsync } from 'await-catcher';
 ```
-
+<br>
 
 ## Examples
 await-catcher benefits:
