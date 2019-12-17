@@ -39,14 +39,14 @@
 [![Actions Status][actions-image]][actions-url]
 --->
 
------
+
 ## Installation
 [![NPM](https://nodei.co/npm/await-catcher.png)](https://nodei.co/npm/await-catcher/)
 ```bash
 npm i await-catcher --save
 ```
 
------
+
 ## Usage
 Import the library into your JavaScript file:
 
@@ -54,7 +54,7 @@ Import the library into your JavaScript file:
 import { awaitCatcher, awaitCatcherAsync } from 'await-catcher';
 ```
 
------
+
 ## Examples
 await-catcher benefits:
 ```text
@@ -64,7 +64,7 @@ await-catcher benefits:
  4) Use awaitCatcherAsync to pass a call-back instead of using await/async (see below screenshot)
 ```
 <img align="right" alt="await-catcher example" src="await-catcher-example.PNG" target="_blank" />
-<br>
+.
 
 ### #1
 ```js
