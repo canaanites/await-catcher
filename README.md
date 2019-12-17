@@ -3,7 +3,7 @@
     <img src="https://img.shields.io/npm/v/await-catcher.svg?style=for-the-badge" target="_blank" />
   </a>
  
- <a aria-label="await-catcher" href="https://github.com/canaanites/await-catcher/blob/master/LICENSE" target="_blank">
+ <a align="right" aria-label="await-catcher" href="https://github.com/canaanites/await-catcher/blob/master/LICENSE" target="_blank">
     <img align="right" alt="License: MIT" src="https://img.shields.io/badge/License-MIT-success.svg?style=for-the-badge&color=33CC12" target="_blank" />
   </a>
 </p>
@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <a aria-label="Well tested await-catch Library" href="https://github.com/canaanites/await-catcher/actions">
+  <a align="center" aria-label="Well tested await-catch Library" href="https://github.com/canaanites/await-catcher/actions">
     <img align="center" alt="GitHub Actions status" src="https://github.com/canaanites/await-catcher/workflows/Test%20await%20catcher/badge.svg">
   </a>
 </p>
@@ -25,7 +25,7 @@
 <p>
   <img alt="npm type definitions" src="https://img.shields.io/npm/types/await-catcher?style=for-the-badge">
 
-  <a aria-label="NPM await-catcher" href="https://www.npmjs.com/package/await-catcher" target="_blank">
+  <a align="right" aria-label="NPM await-catcher" href="https://www.npmjs.com/package/await-catcher" target="_blank">
     <img align="right" alt="NPM: await-catcher" src="http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge" target="_blank" />
   </a>
 <!--- 
