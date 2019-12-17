@@ -212,6 +212,11 @@ awaitCatcherAsync<Array<string>>(
   }
 ```
 
+### Thanks
+
+- [Evan Bacon](https://github.com/EvanBacon) a great markdown developer! (I stole this layout from him!)
+
+
 [npm-url]: https://www.npmjs.com/package/await-catcher
 [npm-image]: https://img.shields.io/npm/v/await-catcher.svg?style=flat-square
 
