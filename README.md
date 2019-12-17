@@ -58,7 +58,7 @@ import { awaitCatcher, awaitCatcherAsync } from 'await-catcher';
 <br>
 
 ## Examples
-await-catcher benefits:
+<b>await-catcher benefits:</b>
 
  1) Type checking with typeScript generics
  2) Cleaner & less code (no need for try/catch)
