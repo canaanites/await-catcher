@@ -23,10 +23,10 @@
 <br>
 
 <p>
-  <img alt="npm type definitions" src="https://img.shields.io/npm/types/await-catcher?style=flat-square">
+  <img alt="npm type definitions" src="https://img.shields.io/npm/types/await-catcher?style=for-the-badge">
 
   <a align="right" aria-label="NPM await-catcher" href="https://www.npmjs.com/package/await-catcher" target="_blank">
-    <img align="right" alt="NPM: await-catcher" src="http://img.shields.io/npm/dm/await-catcher.svg?style=flat-square" target="_blank" />
+    <img align="right" alt="NPM: await-catcher" src="http://img.shields.io/npm/dm/await-catcher.svg?style=for-the-badge" target="_blank" />
   </a>
 <!--- 
   <a aria-label="" href="">
