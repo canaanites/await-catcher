@@ -211,9 +211,10 @@ awaitCatcherAsync<Array<string>>(
       getByKeysAndInvoke?: String[]; // get key/values from object and invoke functions
   }
 ```
+<br>
 
 #### 🙏 Thanks to
-[Evan Bacon](https://github.com/EvanBacon), a great "markdown developer". (I stole this layout from him! 😁)
+[Evan Bacon](https://github.com/EvanBacon), a great "markdown developer". (I stole this readme layout from him! 😁)
 
 
 [npm-url]: https://www.npmjs.com/package/await-catcher
